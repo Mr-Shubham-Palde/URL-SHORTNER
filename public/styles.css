@@ -1,0 +1,40 @@
+body {
+  background: url('https://images.pexels.com/photos/531880/pexels-photo-531880.jpeg?auto=compress&cs=tinysrgb&w=600') no-repeat center center fixed;
+  background-size: cover; /* Makes sure the image covers the whole page */
+  height: 100vh;          /* Ensures the body takes up full viewport height */
+  margin: 0;              /* Removes default margin */
+  font-family: 'Arial', sans-serif; /* Optional: Change font */
+}
+
+.container {
+  background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background for readability */
+  padding: 20px;
+  border-radius: 10px; /* Rounded corners */
+  width: 80%; /* Makes the container narrower */
+  margin: auto; /* Centers the container horizontally */
+  text-align: center; /* Centers the text inside the container */
+}
+  
+  h1 {
+    color: #007bff;
+    font-weight: bold;
+  }
+  
+  .btn-primary {
+    background-color: #28a745;
+    border: none;
+  }
+  
+  .table {
+    margin-top: 20px;
+  }
+  
+  td a {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  td a:hover {
+    text-decoration: underline;
+  }
+  

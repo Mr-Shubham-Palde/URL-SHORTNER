@@ -1,0 +1,109 @@
+<!-- EJS is better than plain HTML when you need to make your web pages dynamic. It lets you add JavaScript right into your HTML, so you can easily display changing data, reuse common parts like headers or footers -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Awesome URL Shortener</title>
+
+    <!-- Bootstrap CSS for a sleek design -->
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Custom CSS file -->
+    <link href="/styles.css" rel="stylesheet" />
+    <style>
+      /* Fixed cell width and ellipsis */
+      .table td {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 200px; /* Limit cell width */
+      }
+
+      /* Responsive table wrapper */
+      .table-responsive {
+        overflow-x: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="d-flex justify-content-center align-items-center min-vh-100">
+      <div class="container text-center">
+        <a href="/info" class="btn btn-info mb-5">Learn About URL Shorteners</a>
+
+        <h1 class="my-5">Awesome URL Shortener</h1>
+
+        <!-- Added Bootstrap card for the paragraph -->
+        <div class="card mb-5">
+          <div class="card-body">
+            <p class="card-text">
+              In today's fast-paced digital world, URLs can often be long and unwieldy, making them difficult to share and remember. 
+              A URL shortener transforms lengthy URLs into concise, manageable links, perfect for sharing on social media, emails, 
+              or any platform with character limits. Not only do shortened URLs look cleaner, but they also allow tracking of user 
+              engagement through click statistics. Simplify your links and improve your sharing experience with our efficient URL 
+              shortener tool.
+            </p>
+          </div>
+        </div>
+
+        <form action="/shortUrls" method="POST" class="form-inline justify-content-center">
+          <div class="form-group mb-2">
+            <label for="fullUrl" class="sr-only">Full URL</label>
+            <input
+              type="text"
+              class="form-control"
+              name="fullUrl"
+              id="fullUrl"
+              placeholder="Enter URL"
+              required
+            />
+          </div>
+          <button type="submit" class="btn btn-primary mb-2">Shorten</button>
+        </form>
+
+        <h3 class="my-5">Shortened URLs</h3>
+        <table class="table table-bordered table-striped">
+          <thead>
+            <tr>
+              <th>Full URL</th>
+              <th>Short URL</th>
+              <th>Clicks</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% shortUrls.forEach(function(shortUrl) { %>
+              <tr>
+                <td><a href="<%= shortUrl.full %>"><%= shortUrl.full %></a></td>
+                <td><a href="/<%= shortUrl.short %>"><%= shortUrl.short %></a></td>
+                <td><%= shortUrl.clicks %></td>
+                <td>
+                  <form action="/delete/<%= shortUrl._id %>" method="POST" style="display:inline;">
+                    <button class="btn btn-danger btn-sm">Delete</button>
+                  </form>
+                </td>
+              </tr>
+            <% }) %>
+          </tbody>
+          
+        </table>
+      </div>
+    </div>
+
+    <!-- Footer Section -->
+    <footer class="bg-dark text-white text-center py-3">
+      <div class="container">
+        <p class="mb-0">© 2024 Shubham Palde and Group. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <!-- Bootstrap JS, Popper.js, and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </body>
+</html>
